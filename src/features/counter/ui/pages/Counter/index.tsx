@@ -39,11 +39,8 @@ const Counter: React.FC = () => {
 
   const classes = useStyles()
 
-  // const {counter, loading} = useAtom(counterAtom)
-  // const {counter, loading} = useAtom(counterAtom)
   const counter = useAtom(counterAtom, counterSelector, [])
   const loading = useAtom(counterAtom, loadingSelector, [])
-  console.log({counter, loading})
   const increment = useAction(incrementAction)
   const decrement = useAction(decrementAction)
   const getRandom = useAction(getRandomAction)
@@ -52,7 +49,7 @@ const Counter: React.FC = () => {
   const handleRandomButton = (index: number) => () => getRandom(index)
 
   return (
-    <Paper elevation={3} className={classes.paper}>
+    <Paper elevation={5} className={classes.paper}>
       <div className={classes.root}>
         <Box color={'primary.main'}>
           <Typography variant={'h2'}>

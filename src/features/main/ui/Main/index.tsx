@@ -16,7 +16,7 @@ const Main: FC = () => {
   return (
     <div className={classes.root}>
       <Box color={'secondary.main'}>
-        <Typography variant={'h2'}>Главная страница</Typography>
+        <Typography variant={'h3'}>Главная страница</Typography>
       </Box>
     </div>
   )

@@ -30,7 +30,7 @@ const Navigation: FC = () => {
             onChange={handleChange}>
         <Tab label={"Main"} value={'/'}/>
         <Tab label={"Counter"} value={'/counter'}/>
-        <Tab label={"Item Three"} value={'/shop'}/>
+        <Tab label={"Shop"} value={'/shop'}/>
       </Tabs>
     </AppBar>
   )

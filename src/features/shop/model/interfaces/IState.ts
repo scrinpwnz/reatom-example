@@ -1,4 +1,5 @@
 export interface IState {
-  counter: number
-  loading: boolean[]
+  tab: Tab
 }
+
+export type Tab = 'shop' | 'cart'

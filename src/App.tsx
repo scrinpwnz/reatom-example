@@ -5,6 +5,7 @@ import {Route, Switch} from "react-router";
 import Counter from "./features/counter/ui/pages/Counter";
 import JsonTree from "./features/jsonTree/ui/pages/JsonTree";
 import Main from "./features/main/ui/Main";
+import Shop from './features/shop/ui/pages';
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -35,6 +36,7 @@ const App: FC = () => {
           <Switch>
             <Route exact path={'/'} component={Main}/>
             <Route path={'/counter'} component={Counter}/>
+            <Route path={'/shop'} component={Shop}/>
           </Switch>
         </Container>
       </main>
