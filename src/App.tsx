@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     gridTemplateRows: 'fit-content(100%) 1fr'
   },
   container: {
-    padding: theme.spacing(2,3)
+    padding: theme.spacing(2, 3)
   }
 }))
 

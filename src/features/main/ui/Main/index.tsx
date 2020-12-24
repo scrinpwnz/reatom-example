@@ -1,4 +1,4 @@
-import {Theme, makeStyles, Box, Typography} from "@material-ui/core";
+import {Box, makeStyles, Theme, Typography} from "@material-ui/core";
 import React, {FC} from 'react'
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const Main: FC = () => {
 
+  console.count('Main')
   const classes = useStyles()
 
   return (

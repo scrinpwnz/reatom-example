@@ -5,10 +5,12 @@ import {deleteFromCartAction, moveToCartAction, setTabAction} from "./actions";
 
 const initialState: IState = {
   tab: 'market',
+  /** Создание моковых данных */
   marketItems: generateMarketItems(8),
   itemsInCart: []
 }
 
+/** Атом маркета, корзина выполнена в виде массива UUID(string[]) */
 export const marketAtom = declareAtom(
   "market",
   initialState,
@@ -28,6 +30,9 @@ export const marketAtom = declareAtom(
   ]
 )
 
+/** Атом, полученный с помощью функции map. Корзина собрана с помощью данных атома marketAtom,
+ * но здесь уже это не массив UUID, а массив IMarketItem
+ */
 export const cartAtom = map(
   "cart",
   marketAtom,

@@ -8,11 +8,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   root: {}
 }))
 
-interface Props {
-
-}
-
-const Cart: FC<Props> = props => {
+const Cart: FC = () => {
 
   console.count('Cart')
   const classes = useStyles()

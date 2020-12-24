@@ -11,7 +11,9 @@ export const counterAtom = declareAtom(
   "counter",
   initialState,
   on => [
+
     /** Обработка действий */
+
     on(incrementAction, (state) => {
       state.counter++
       return {...state}

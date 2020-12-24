@@ -1,11 +1,10 @@
-import {Theme, makeStyles, Paper, Typography, Box, Button} from "@material-ui/core";
+import {Box, Button, makeStyles, Paper, Theme, Typography} from "@material-ui/core";
 import React from 'react'
 import {useAction, useAtom} from "@reatom/react";
 import {counterAtom, decrementAction, getRandomAction, incrementAction} from "../../../model";
 import ButtonWithProgress from "../../atoms/ButtonWithProgress";
 import {counterSelector, loadingSelector} from "../../../model/selectors";
 import {useJsonTreeSubscribe} from "../../../../jsonTree/hooks/useJsonTreeSubscribe";
-import {navigationAtom} from "../../../../navigation/model";
 
 const useStyles = makeStyles((theme: Theme) => ({
   paper: {
@@ -34,11 +33,10 @@ const useStyles = makeStyles((theme: Theme) => ({
 }))
 
 
-
 const Counter: React.FC = () => {
 
+  console.count('Counter')
   const classes = useStyles()
-
   const counter = useAtom(counterAtom, counterSelector, [])
   const loading = useAtom(counterAtom, loadingSelector, [])
   const increment = useAction(incrementAction)
@@ -65,13 +63,25 @@ const Counter: React.FC = () => {
           </Button>
         </div>
         <div className={classes.randomButtons}>
-          <ButtonWithProgress onClick={handleRandomButton(0)} inProgress={loading[0]}>
+          <ButtonWithProgress
+            buttonProps={{
+              onClick: handleRandomButton(0)
+            }}
+            inProgress={loading[0]}>
             Random 1
           </ButtonWithProgress>
-          <ButtonWithProgress onClick={handleRandomButton(1)} inProgress={loading[1]}>
+          <ButtonWithProgress
+            buttonProps={{
+              onClick: handleRandomButton(1)
+            }}
+            inProgress={loading[1]}>
             Random 2
           </ButtonWithProgress>
-          <ButtonWithProgress onClick={handleRandomButton(2)} inProgress={loading[2]}>
+          <ButtonWithProgress
+            buttonProps={{
+              onClick: handleRandomButton(2)
+            }}
+            inProgress={loading[2]}>
             Random 3
           </ButtonWithProgress>
         </div>

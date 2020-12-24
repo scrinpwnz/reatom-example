@@ -1,5 +1,5 @@
 import {Badge, BottomNavigation, BottomNavigationAction, makeStyles, Paper, Theme} from "@material-ui/core";
-import React, {FC} from 'react'
+import React, {FC, memo} from 'react'
 import LocalMallIcon from '@material-ui/icons/LocalMall';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import {useAction, useAtom} from "@reatom/react";
@@ -12,12 +12,9 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }))
 
-interface Props {
+const ShopTabs: FC = () => {
 
-}
-
-const ShopTabs: FC<Props> = props => {
-
+  console.count('ShopTabs')
   const classes = useStyles()
   const tab = useAtom(marketAtom, tabSelector, [])
   const cartCount = useAtom(marketAtom, itemsInCartCountSelector, [])
@@ -56,4 +53,4 @@ const ShopTabs: FC<Props> = props => {
   )
 }
 
-export default ShopTabs
+export default memo(ShopTabs)

@@ -6,7 +6,9 @@ import {IMarketItem, Tab} from "../../../model/interfaces";
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+    maxHeight: 680,
+    overflow: 'auto',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
     gridGap: theme.spacing(2),
     padding: theme.spacing(2)
   }
@@ -19,6 +21,7 @@ interface Props {
 
 const MarketItemList: FC<Props> = ({marketItems, variant}) => {
 
+  console.count('MarketItemList')
   const classes = useStyles()
 
   const mappedMarketItems = marketItems.map((item, index) => (

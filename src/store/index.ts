@@ -5,6 +5,7 @@ import {navigationAtom} from "../features/navigation/model";
 import {jsonTreeAtom} from "../features/jsonTree/model";
 import {cartAtom, marketAtom} from "../features/shop/model";
 
+/** Комбинирование атомов в главный атом */
 const rootAtom = combine([
   navigationAtom,
   counterAtom,
@@ -14,4 +15,5 @@ const rootAtom = combine([
 ])
 
 export const store = createStore(rootAtom)
+/** Reatom может работать с ReduxDevtools */
 connectReduxDevtools(store)

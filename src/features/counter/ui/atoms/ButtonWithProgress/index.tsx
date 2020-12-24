@@ -1,4 +1,4 @@
-import {Theme, makeStyles, Button, CircularProgress, ButtonProps} from "@material-ui/core";
+import {Button, ButtonProps, CircularProgress, makeStyles, Theme} from "@material-ui/core";
 import React, {FC} from 'react'
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -14,24 +14,25 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }))
 
-interface Props extends ButtonProps {
+interface Props {
+  buttonProps: ButtonProps
   inProgress?: boolean
 }
 
-const ButtonWithProgress: FC<Props> = (props) => {
+const ButtonWithProgress: FC<Props> = ({buttonProps, inProgress, children}) => {
 
   const classes = useStyles()
 
   return (
     <div className={classes.root}>
-      <Button {...props}
+      <Button {...buttonProps}
               fullWidth
-              disabled={props.inProgress}
+              disabled={inProgress}
               variant={'outlined'}
               color={'default'}>
-        {props.children}
+        {children}
       </Button>
-      {props.inProgress && (
+      {inProgress && (
         <CircularProgress size={24} className={classes.progress}/>
       )}
     </div>

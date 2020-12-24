@@ -19,17 +19,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   paper: {}
 }))
 
-interface Props {
-
-}
-
 const tabsMapper = {
   'market': <Market/>,
   'cart': <Cart/>
 }
 
-const Shop: FC<Props> = props => {
+const Shop: FC = () => {
 
+  console.count('Shop')
   const classes = useStyles()
   const tab = useAtom(marketAtom, tabSelector, [])
   useJsonTreeSubscribe(marketAtom)
