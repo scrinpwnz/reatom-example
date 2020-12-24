@@ -5,7 +5,10 @@ import reportWebVitals from './reportWebVitals';
 import {context} from '@reatom/react';
 import {BrowserRouter} from "react-router-dom";
 import {store} from "./store";
+import * as faker from "faker";
 
+// @ts-ignore
+window.faker = faker
 
 ReactDOM.render(
   <BrowserRouter>

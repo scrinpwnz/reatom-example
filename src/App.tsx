@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   root: {
     display: 'grid',
     height: '100vh',
+    overflow: 'hidden',
     gridTemplateColumns: '1fr minmax(200px, 320px)'
   },
   main: {

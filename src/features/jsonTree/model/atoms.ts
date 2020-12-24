@@ -1,10 +1,22 @@
 import {declareAtom} from "@reatom/core";
-import {refreshAction} from "./actions";
+import {refreshAction, toggleAction} from "./actions";
+
+const initialState = {
+  hidden: true,
+  refresh: 0
+}
 
 export const jsonTreeAtom = declareAtom(
-  'jsonTreeRefresher',
-  false,
+  'jsonTree',
+  initialState,
   on => [
-    on(refreshAction, state => !state)
+    on(refreshAction, state => ({
+      ...state,
+      refresh: ++state.refresh
+    })),
+    on(toggleAction, state => ({
+      ...state,
+      hidden: !state.hidden
+    }))
   ]
 )

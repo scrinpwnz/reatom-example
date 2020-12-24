@@ -10,12 +10,14 @@ export const getRandomDoneAction = declareAction<IGetRandomDonePayload>(
   `${prefix}_GET_RANDOM_DONE`
 );
 
+
+/** Асинхронное действие, аналог Thunk */
 export const getRandomAction = declareAction<number>(
   `${prefix}_GET_RANDOM`,
   async (payload, {dispatch}) => {
-  await sleep(2000)
-  dispatch(getRandomDoneAction({
-    counter: getRandomIntInclusive(-100, 100),
-    loadingIndex: payload
-  }));
-});
+    await sleep(2000)
+    dispatch(getRandomDoneAction({
+      counter: getRandomIntInclusive(-100, 100),
+      loadingIndex: payload
+    }));
+  });
