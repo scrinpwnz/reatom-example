@@ -105,12 +105,64 @@ const store = createStore(combinedAtom)
 Все зависимости, от которых зависит данный атом, будут подключены к ``store``.  
 Далее можно подписываться на изменения:
 ```typescript jsx
-store.subscribe(combinedAtom, () => console.log('combinedAtom изменился'))
+const unsubscribe = store.subscribe(combinedAtom, () => console.log('combinedAtom изменился'))
 ```
+Вызов `unsubscribe` позволяет отписаться от изменений в сторе. Реатом так же проверяет есть ли на этот атом подписчики, и, если их нет, он очищает стор от данных, которые использовал данный атом.
+
 Вызов действия:
 ```typescript jsx
 store.dispatch(addAction('uuid удаляемого итема'))
 ```
 
+### Разделение кода
+Пример разделения кода:
+```typescript jsx
+import('./pages/products/model').then(module => {
+    store.subscribe(module.Products, render)
+})
+```
+
+---
+## Reatom и React
+У реатома есть библиотека для работы с реактом. Она предоставляет два хука - `useAtom` и `useAction`.
+
+### `useAtom`
+Получение состояние атома:
+```typescript jsx
+const atomValue = useAtom(atom)
+```
+Получение состояние атома с применением динамического селектора:
+```typescript jsx
+const atomValue = useAtom(atom, atomState => atomState[props.id], [props.id])
+```
+Стоит заметить, что при использовании селектора нужно передавать массив зависимостей, чтобы селектор заново применялся при изменении этих переменных.
+
+### `useAction`
+Получение **action** внутри компонента:
+```typescript jsx
+const handleDoSome = useAction(doSomeAction)
+```
+**Action** с подготовкой **payload**:
+```typescript jsx
+const handleDoSome = useAction(
+  value =>
+    doSomeAction({
+      id: props.id,
+      value,
+    }),
+  [props.id],
+)
+```
+**Action** с условием: 
+```typescript jsx
+const handleDoSome = useAction(payload => {
+  if (condition) return doSomeAction(payload)
+}, [])
+```
+`dispatch` не будет вызван, если **action-creator** не вернет функцию.
+
+# Пример работы
+Запуск: `yarn start`  
+Либо можно посмотреть развернутый проект тут: https://codesandbox.io/s/autumn-sound-7tvz6
 
 
